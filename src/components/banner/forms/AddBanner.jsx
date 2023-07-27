@@ -1,0 +1,280 @@
+import "styles/forms.css";
+
+import { post } from "axios";
+import BreadCrumb from "components/common/forms/BreadCrumb";
+import { CustomSelect } from "components/common/forms/custom-select";
+import { Input } from "components/common/forms/Input";
+import { Textarea } from "components/common/forms/textarea";
+import ImageView from "components/common/forms/ImageView";
+import img1 from "images/2.svg";
+import { Form } from "informed";
+import Joi from "joi-browser";
+import { withSnackbar } from "notistack";
+import React, { Fragment, PureComponent } from "react";
+import { Col, Row } from "reactstrap";
+import { getJwt } from "service/authService";
+import { addBanners, updateBanners } from "service/bannerService";
+
+import { apiUrl2 } from "./../../../config.json";
+
+import { subDirectory } from "../../../config.json";
+
+class AddBanner extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.notificationDOMRef = React.createRef();
+  }
+
+  state = {
+    data: {},
+    img1: img1,
+    editVal: false,
+    ImageUrl: "",
+    Mid: "",
+    merchantId: "",
+    Status: [
+      { id: "A", name: "Active" },
+      { id: "D", name: "InActive" },
+    ],
+    isImage: true,
+  };
+
+  validateProperty = (name, value) => {
+    const schema = Joi.reach(Joi.object(this.schema), name);
+    const { error } = Joi.validate(value, schema);
+    return error ? error.details[0].message : null;
+  };
+
+  schema = {
+    imgUrl: Joi.string().required().label("Banner Image"),
+    imageStatus: Joi.string().required().label("Image Status"),
+  };
+
+  async componentDidMount() {
+    let res = await getJwt("__info");
+    console.log(res);
+    const { merchantId } = res;
+    const { userRole } = res;
+    await this.setState({ userRole: userRole });
+    await this.setState({ merchantId: merchantId });
+    console.log(this.state.merchantId, "MId");
+    const {
+      params: { pageName },
+    } = this.props.props.props.match;
+    if (pageName === "edit") {
+      await this.setState({ editVal: true });
+      const {
+        location: { state },
+      } = this.props.props.props;
+      return this.formStateCheck(state.row);
+    }
+  }
+
+  formStateCheck = async (data) => {
+    this.setState({ImageUrl:data.imageUrl})
+    await this.setState({
+      data,
+      imageId: data.imageId,
+      img1: data.imageUrl,
+
+      image: data.imageURL,
+    });
+    try {
+      await this.formApi.setValues(data);
+    } catch (err) {}
+  };
+
+  getUserInfo = async () => {
+    let res = await getJwt("__info");
+    const { uid } = res;
+    await this.setState({ uid: uid, userInfo: res, userName: res.userName });
+  };
+
+  optionSchema = {
+    label: Joi.string().empty("").optional(),
+    value: Joi.any().optional(),
+  };
+
+  handleImage = async (e) => {
+    let imgUrl = await this.fileUpload(e.target.files[0]);
+    const data = this.formApi.getState().values;
+    data["imgUrl"] = imgUrl.data.data;
+    await this.setState({ ImageUrl: imgUrl.data.data });
+    await this.formApi.setValues(data);
+    await this.setState({
+      image: imgUrl.data.data,
+      img1: imgUrl.data.data,
+      isImage: true,
+    });
+    // var reader = new FileReader();
+    // reader.onload = function () {
+    // 	var output = document.getElementById('output_image');
+    // 	output.src = reader.result;
+    // }
+    // reader.readAsDataURL(this.state.image);
+  };
+
+  fileUpload(file) {
+    const url = `${apiUrl2}/uploadImage`;
+    const formData = new FormData();
+    formData.append("image", file);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
+    return post(url, formData, config);
+  }
+
+  handleChange = async ({ currentTarget: Input }) => {
+    const { name, value } = Input;
+    const { data } = this.state;
+    data[name] = value;
+    await this.setState({
+      [name]: value,
+    });
+  };
+
+  onSubmit = async () => {
+    const { userName } = this.state;
+
+    let res = "";
+    const {
+      params: { pageName },
+    } = this.props.props.props.match;
+    if (pageName === "upload") {
+      const data = this.formApi.getState().values;
+      let postData = {
+        imageDescription: data.imageDescription,
+        imageUrl: this.state.ImageUrl,
+        imageStatus: data.imageStatus,
+        merchantId: this.state.merchantId,
+      };
+      console.log(postData);
+      res = await addBanners(postData);
+      if (res.data.statusCode === 1) {
+        this.addNotification(res.data.message);
+        this.resetForm();
+      }
+    } else if (pageName === "edit") {
+      const data = this.formApi.getState().values;
+      let postData = {
+        imageDescription: data.imageDescription,
+        imageUrl:  this.state.ImageUrl,
+        imageStatus: data.imageStatus,
+        imageId: data.imageId || data.imageId.toString(),
+        merchantId: data.merchantId,
+      };
+      console.log(postData);
+      res = await updateBanners(postData);
+      if (res.data.statusCode === 1) {
+        this.addNotification(res.data.data);
+        this.resetForm();
+      }
+    }
+  };
+
+  addNotification = (message, variant = "success") => {
+    const { enqueueSnackbar } = this.props;
+    const options = {
+      variant,
+      anchorOrigin: {
+        vertical: "bottom",
+        horizontal: "center",
+        autoHideDuration: 1000,
+      },
+    };
+    enqueueSnackbar(message, options);
+  };
+
+  setFormApi = (formApi) => {
+    this.formApi = formApi;
+  };
+
+  resetForm = async () => {
+    const {
+      params: { pageName },
+    } = this.props.props.props.match;
+    this.formApi.reset();
+    this.setState({ isImage: false });
+
+    setTimeout(() => {
+      this.props.props.props.history.push(`${subDirectory}/banner/list`);
+    }, 100);
+  };
+
+  render() {
+    const {
+      params: { pageName },
+    } = this.props.props.props.match;
+    const breadCrumbItems = {
+      title: " Upload Banner",
+      items: [
+        { name: "Home", link: `${subDirectory}/dashboard` },
+        { name: "Banner List", link: `${subDirectory}/banner/list` },
+        { name: `Upload Banner `, active: true },
+      ],
+    };
+    const { isImage, image, img1, ImageUrl } = this.state;
+    return (
+      <Fragment>
+        <Form getApi={this.setFormApi} onSubmit={this.onSubmit}>
+          {({ formApi, formState }) => (
+            <div>
+              <BreadCrumb data={breadCrumbItems} />
+              <Row className="form-div">
+                <Col md={3} sm={12}>
+                  <Input
+                    field="img"
+                    type="file"
+                    multiple
+                    label="Banner Image"
+                    name="img"
+                    onChange={this.handleImage}
+                  />
+                </Col>
+                <Col md={3} sm={12}>
+                  <CustomSelect
+                    field="imageStatus"
+                    label="Status"
+                    name="imageStatus"
+                    getOptionValue={(option) => option.id}
+                    getOptionLabel={(option) => option.name}
+                    options={this.state.Status}
+                    onChange={this.handleChange}
+                    validateOnBlur
+                    validate={(e) => this.validateProperty("imageStatus", e)}
+                  />
+                </Col>
+                <Col md={12} sm={12}>
+                  <Textarea
+                    field="imageDescription"
+                    label="Banner Description"
+                    name="imgDescription"
+                    onChange={this.handleChange}
+                  />
+                </Col>
+                <ImageView alt="data@prematix" field="merchantLogo" image={ImageUrl} />
+              </Row>
+              <div className="d-flex justify-content-end">
+                <button
+                  type="button"
+                  className="btn btn-warning btn-sm mr-3"
+                  id="cancelbtn"
+                  onClick={() => this.resetForm()}
+                >
+                  Cancel
+                </button>
+                <button type="submit" className="btn btn-primary btn-sm">
+                  Submit
+                </button>
+              </div>
+            </div>
+          )}
+        </Form>
+      </Fragment>
+    );
+  }
+}
+
+export default withSnackbar(AddBanner);

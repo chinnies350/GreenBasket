@@ -1,0 +1,52 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.filters > div {
+  margin-right: 1rem;
+}
+
+.filters > div.dropdown > div {
+  background: white;
+  /* padding: 22px 0 16px 0; */
+  -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  cursor: default;
+  border: none;
+  padding: 0.5rem 0px;
+}
+
+.filters > div.dropdown > div button {
+  line-height: 23px;
+  line-height: 2rem;
+  list-style: none;
+  text-align: left;
+  padding: 0 10px 0 18px;
+  position: relative;
+  color: #202021;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.filters ul li label {
+  margin: 0;
+}
+
+.filters > div.dropdown > div button:hover,
+.filters > div.dropdown > div .form-check:hover {
+  background: rgba(204, 204, 204, 0.23137);
+}
+
+.filters > div.dropdown > div .form-check {
+  position: relative;
+  display: block;
+  padding: 0.4rem 0.5rem 0.4rem 2rem;
+  cursor: pointer;
+  list-style: none;
+  text-align: left;
+  position: relative;
+  color: #202021;
+  cursor: pointer;
+  font-size: 0.9rem;
+}

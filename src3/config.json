@@ -1,0 +1,11 @@
+{
+  "apiUrl": "http://mean.prematix.solutions/greenBasket",
+  "apiUrl2":"http://192.168.1.22:5500", 
+  "apiUrl1": "http://prematix.solutions/green-basket-api",
+  "gooogleClientId": "449103900036-kh4h62bejf3okvujqdkd5lu55fkb2of2.apps.googleusercontent.com",
+  "facebookAppId": "405167190303957",
+  "staticToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NTU0MTUwMjcsInR5cGUiOiJhY2Nlc3MiLCJpZGVudGl0eSI6ImVhc3lmcnVpdHZlZyIsIm5iZiI6MTU1NTQxNTAyNywiZnJlc2giOmZhbHNlLCJ1c2VyX2NsYWltcyI6eyJ1aWQiOiJlYXN5ZnJ1aXR2ZWcifSwianRpIjoiYTY3ZjlhZGEtYzhmMS00YTNjLTg5MTgtZjlmZDdlMjc4OWViIn0.tBRmp4Jgnj8tbAaVgebPQ6KJT4NzJy-wPvM8ehrZV6c",
+  "paymentGatwayURI": "http://localhost:3002",
+  "subDirectory": "/easyfruitveg"
+}
+

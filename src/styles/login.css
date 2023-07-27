@@ -1,0 +1,139 @@
+.login-block {
+  float: left;
+  width: 100%;
+  padding: 50px 0;
+  padding-top: 100px;
+  padding-bottom: 130px;
+}
+.banner-sec {
+  background: url(/images/sign-up.png);
+  /* min-height: 523px; */
+  border-radius: 0 10px 10px 0;
+  padding: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.login-sec {
+  padding: 50px 30px;
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+}
+.login-sec .copy-text {
+  position: absolute;
+  width: 80%;
+  bottom: 20px;
+  font-size: 13px;
+  text-align: center;
+}
+.login-sec .copy-text i {
+  color: #feb58a;
+}
+.login-sec .copy-text a {
+  color: #e36262;
+}
+.login-sec h2 {
+  margin-bottom: 30px;
+  margin-top: 10px;
+  font-weight: 800;
+  font-size: 22px;
+  color: green;
+}
+.login-sec h2:after {
+  content: " ";
+  width: 60px;
+  height: 4px;
+  background: #feb58a;
+  display: block;
+  margin-top: 10px;
+  border-radius: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn-login {
+  background: #de6262;
+  color: #fff;
+  font-weight: 600;
+}
+.banner-text {
+  position: absolute;
+  bottom: 40px;
+  padding-left: 20px;
+}
+.banner-text h2 {
+  color: green;
+  font-weight: 600;
+}
+.banner-text h2:after {
+  content: " ";
+  width: 100px;
+  height: 5px;
+  background: #fff;
+  display: block;
+  margin-top: 20px;
+  border-radius: 3px;
+}
+.banner-text p {
+  color: black;
+}
+.loginformpadding {
+  border: 1px solid #ddeadd;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+#labelpadding {
+  margin: 11px;
+}
+.buttonpadding {
+  text-align: right !important;
+  padding-top: 10px;
+}
+.successpadding {
+  padding-top: 70px;
+}
+
+.social-media {
+  margin: 1em 0;
+}
+
+.social-media svg {
+  font-size: 2.3rem;
+  margin: 0 1rem 0 0;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 24rem;
+  padding: 0.3rem;
+  transition: 0.3s all linear;
+  -webkit-transition: 0.3s all linear;
+  -moz-transition: 0.3s all linear;
+  -ms-transition: 0.3s all linear;
+  -o-transition: 0.3s all linear;
+}
+
+.social-media svg.facebook {
+  color: #3f51b5;
+}
+
+.social-media svg.facebook:hover {
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.social-media svg.google {
+  color: #f44336;
+}
+
+.social-media svg.google:hover {
+  color: #fff;
+  background-color: #f44336;
+}
+.facebook-btn-style {
+  padding: 0;
+  border: none;
+  background: white;
+  outline: none;
+  -webkit-appearance: inherit !important;
+}

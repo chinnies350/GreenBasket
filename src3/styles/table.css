@@ -1,0 +1,118 @@
+.table-div {
+  border-radius: 4px;
+  box-shadow: 3px 4px 27px -2px #e6e6e6;
+  background: #fff;
+}
+
+.table {
+  min-width: 100% !important;
+  width: auto !important;
+}
+/* .active{
+  background-color:wheat;
+}
+.inactive{
+  background-color: blue;
+} */
+
+.table th {
+  background: #6db444 !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  vertical-align: initial !important;
+  color: #fff;
+}
+.table td {
+  font-size: 0.8rem !important;
+  color: #201e1e;
+  text-rendering: optimizeLegibility;
+  font-weight: 400;
+}
+.table td,
+.table th {
+  padding: 0.35rem 0.75rem;
+}
+
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before,
+table.dataTable thead .sorting_desc_disabled:after {
+  bottom: 0.5em;
+}
+
+.pending {
+  padding: 0.1rem 0.4rem;
+  background: #ff9800;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.in-progress {
+  padding: 0.1rem 0.4rem;
+  background: #ffc107;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.packed {
+  padding: 0rem 0.4rem;
+  background: #4caf50;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.badge {
+  padding: 0.1rem 0.4rem;
+  display: inline-block;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 100%;
+  font-weight: 400;
+}
+
+.badge-success {
+  color: #fff;
+  background-color: #28a745;
+}
+
+.badge-warning {
+  color: #212529;
+  background-color: #ffc107;
+}
+
+.badge-danger {
+  color: #fff;
+  background-color: #dc3545;
+}
+/* 
+td svg {
+  color: #ffc107;
+} */
+
+.actions svg {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin: 0rem 0.5rem;
+}
+
+.actions svg[title="View"] {
+  color: #4caf50;
+}
+
+.actions svg[title="Edit"] {
+  color: #ff9800;
+}
+
+.actions svg[title="Delete"] {
+  color: #f44336;
+}

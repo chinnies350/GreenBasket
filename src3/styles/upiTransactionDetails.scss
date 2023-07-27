@@ -1,0 +1,162 @@
+.timer,
+.dates {
+  font-size: 24px !important;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.booking-title {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #203e9e;
+}
+.details-heading {
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.logoimg {
+  width: 90%;
+}
+.e-receipt {
+  font-size: 16px;
+  font-weight: 500;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.Text-head {
+  font-size: 16px;
+  font-weight: 700;
+  border: 1px solid green;
+  padding: 10px;
+}
+.Text-data {
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid green;
+  padding: 10px;
+}
+.Main-Header {
+  height: 60px;
+  width: 100%;
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+}
+
+.ttdc-logo {
+  text-align: center;
+}
+
+
+.content-reader {
+  width: 35% !important;
+  max-height: 800px !important;
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  margin: 10px;
+  padding-bottom: 2px;
+  border-radius: 8px;
+  margin-left: 32%;
+  padding-top: 10px;
+}
+
+.content2 {
+  margin: 5px;
+  margin-bottom: 5px;
+}
+
+.data {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.post-table {
+  margin: 5px;
+}
+
+.text1 {
+  font-size: 13px !important;
+  color: white !important;
+}
+.gst-in {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.pre-table {
+  margin: 5px;
+  margin-bottom: 20px;
+  .table {
+    background-color: whitesmoke;
+  }
+  .table th {
+    background: none !important;
+    vertical-align: initial !important;
+    color: black;
+    font-size: 17px !important;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+.text2 {
+  text-align: center !important;
+}
+
+.status-reader {
+  margin: 15px;
+  padding: 5px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+
+.s-failed {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: red;
+}
+
+.s-pending {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  h6 {
+    color: #ffe289;
+  }
+}
+
+.s-success {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  h6 {
+    color: #31b97b;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .content-reader {
+    width: 95% !important;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+      rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    margin: 10px;
+    padding-bottom: 2px;
+    border-radius: 8px;
+    max-height: 540px !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    padding-top: 10px;
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+}
